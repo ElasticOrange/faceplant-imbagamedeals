@@ -1,0 +1,13 @@
+{
+    "name": "elasticorange/faceplant-imbagamedeals",
+    "description": "Landing page for ImbaGameDeals",
+    "require": {
+        "illuminate/database": "~4.2"
+    },
+    "authors": [
+        {
+            "name": "Luca Daniel",
+            "email": "lucadanielcostin@gmail.com"
+        }
+    ]
+}

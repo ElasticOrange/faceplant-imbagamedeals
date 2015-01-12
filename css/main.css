@@ -552,3 +552,7 @@ padding: 40px 15px;
 }
 
 }
+
+.share-section {
+    display: none;
+}
