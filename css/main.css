@@ -502,7 +502,11 @@ to {
     display:inline-block;
     padding-bottom: 15px;
 }
-
+.sharebutton{
+    height: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 
 
 /*==========9. CUSTOM MEDIA QUERIES==============*/
