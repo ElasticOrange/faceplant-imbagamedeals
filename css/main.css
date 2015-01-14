@@ -562,3 +562,9 @@ padding: 40px 15px;
 .share-section {
     display: none;
 }
+
+.incentive-share {
+    font-size:23px; 
+    margin-top: 20px;
+    color: #29c36a;
+}
