@@ -7,6 +7,13 @@
     <meta name="keywords" content="deals,games,friends,share,imba">
     <title>Imba Game Deals - Sharing game deals with you</title>
 
+    <meta property="og:title" content="Imba Game Deals - Sharing game deals with you" />
+    <meta property="og:site_name" content="Imba Game Deals" />
+    <meta property="og:url" content="http://imbagamedeals.com" />
+    <meta property="og:description" content="Lowest prices for video games shared with you" />
+    <meta property="og:image" content="http://imbagamedeals.com/image/logo_imba_f.png" />
+    <meta property="og:type" content="website" />
+
     <link href="/css/bootstrap.css" rel="stylesheet">
 
     <link href="/css/main.css" rel="stylesheet">
@@ -34,6 +41,7 @@
 
             <h2>Find great game deals without searching.</h2>
             <h4>We believe playing more games with your friends will make you happier.</h4>
+            <h4>Enter your email address and we will contact you when we find cheap games that you will love.</h4>
 
             <form class="" role="form" action="subscribe.php" id="subscribeForm" method="POST">
                 <div class="row">
@@ -61,16 +69,16 @@
                     User the hashtag #imbagamedeals so we will be able to find your share.
                 <p/>
                 <div class="row">
-                    <div class="col-xs-4">
-                       <a href="https://twitter.com/home?status=imbagamedeals.com"><img src="/images/twitter.png" class="sharebutton" alt="twitter_share" /></a>
+                    <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-3 col-md-2 col-md-offset-3">
+                       <a target="_blank" class="share-twitter" href="https://twitter.com/home?status=Find games at low prices without searching http://imbagamedeals.com"><img src="/images/twitter.png" class="sharebutton" alt="twitter_share" /></a>
                     </div>
 
-                    <div class="col-xs-4">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=imbagamedeals.com"><img src="/images/facebook.png" class="sharebutton" alt="facebook_share" /></a>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <a target="_blank" class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://imbagamedeals.com"><img src="/images/facebook.png" class="sharebutton" alt="facebook_share" /></a>
                     </div>
 
-                    <div class="col-xs-4">
-                        <a href="https://plus.google.com/share?url=imbagamedeals.com"><img src="/images/googleplus.png" class="sharebutton" alt="googleplus_share" /></a>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <a target="_blank" class="share-googleplus" href="https://plus.google.com/share?url=Find games at low prices without searching http://imbagamedeals.com"><img src="/images/googleplus.png" class="sharebutton" alt="googleplus_share" /></a>
                     </div>
                 </div>
             </div>
@@ -170,6 +178,7 @@
         <section class="row breath">
             <div class="col-md-12 footerlinks">
                 <p>&copy; 2015 ElasticOrange </p>
+                <p><a href="mailto:daniel.luca@elasticorange.com" target="_blank">Contact us</a></p>
             </div>
         </section><! --/section -->
     </div><! --/container -->
@@ -201,6 +210,9 @@ $(function()
     {
         e.preventDefault();
 
+        // Analytics subscribe attempt
+        ga('send', 'event', 'button', 'click', 'Subscribe attempt', 1);
+
         $('#subscribeForm').fadeOut(
             400
             , function()
@@ -220,9 +232,30 @@ $(function()
                 , complete: function(s, t)
                 {
                     var result_data = JSON.parse(s.responseText);
+
+                    // Analytics subscribe success
+                    ga('send', 'event', 'button', 'click', 'Subscribe success', 1);
                 }
             }
         );
+    });
+
+    $('.share-twitter').click(function()
+    {
+        // Analytics share on twitter
+        ga('send', 'event', 'button', 'click', 'Share twitter', 1);
+    });
+
+    $('.share-facebook').click(function()
+    {
+        // Analytics share on facebook
+        ga('send', 'event', 'button', 'click', 'Share facebook', 1);
+    });
+
+    $('.share-googleplus').click(function()
+    {
+        // Analytics share on googleplus
+        ga('send', 'event', 'button', 'click', 'Share googleplus', 1);
     });
 });
 
@@ -237,6 +270,7 @@ $(function()
 
   ga('create', 'UA-55513824-4', 'auto');
   ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 
 </script>
