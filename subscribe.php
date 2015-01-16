@@ -31,7 +31,7 @@ try
 
     $to = $_POST['email'];
     $subject = 'You are on the waiting list for Imba Game Deals';
-    $message = nl2br(file_get_contents('templates/email_subscribed.html'));
+    $message = file_get_contents('templates/email_subscribed.html');
     $headers = 'From: Daniel Luca <daniel@imbagamedeals.com>' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
     mail($to, $subject, $message, $headers);
