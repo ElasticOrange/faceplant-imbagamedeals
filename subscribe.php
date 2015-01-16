@@ -28,6 +28,32 @@ try
             $_POST['email']
         ]
     );
+
+    $mail = new PHPMailer;
+    $mail->SMTPDebug = 3;
+
+    $mail->isSMTP();
+    $mail->Host = 'imbagamedeals.com';
+    $mail->Port = 25;
+
+    $mail->From = 'daniel@imbagamedeals.com';
+    $mail->FromName = 'Daniel';
+    $mail->addAddress('lucadanielcostin@gmail.com');     // Add a recipient
+    $mail->addReplyTo('daniel@imbagamedeals.com', 'Daniel Luca');
+
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    if(!$mail->send())
+    {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    }
+    else
+    {
+        echo 'Message has been sent';
+    }
 }
 catch (Exception $e)
 {
