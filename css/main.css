@@ -730,3 +730,9 @@ a,a:focus,a:hover
     margin-top: 20px;
     color: #5798b5;
 }
+
+.share-text {
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+}
