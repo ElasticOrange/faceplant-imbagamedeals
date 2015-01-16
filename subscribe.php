@@ -29,12 +29,40 @@ try
         ]
     );
 
-    $to = $_POST['email'];
-    $subject = 'You are on the waiting list for Imba Game Deals';
-    $message = file_get_contents('templates/email_subscribed.html');
-    $headers = 'From: Daniel Luca <daniel@imbagamedeals.com>' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    $mandrill = new Mandrill('g2ofKjl3xMp6Nnq5QTudgQ');
 
-    mail($to, $subject, $message, $headers);
+    $message = array(
+        'html' => nl2br(file_get_contents('templates/email_subscribed.html')),
+        'text' => file_get_contents('templates/email_subscribed.html'),
+        'subject' => 'You are on the waiting list for Imba Game Deals',
+        'from_email' => 'daniel@imbagamedeals.com',
+        'from_name' => 'Daniel Luca',
+        'to' => array(
+            array(
+                'email' => $_POST['email'],
+                'name' => '',
+                'type' => 'to'
+            )
+        ),
+        'headers' => array('Reply-To' => 'daniel@imbagamedeals.com'),
+        'important' => false,
+        'track_opens' => true,
+        'track_clicks' => true,
+        'auto_text' => null,
+        'auto_html' => null,
+        'inline_css' => null,
+        'url_strip_qs' => null,
+        'preserve_recipients' => null,
+        'view_content_link' => null,
+        'tracking_domain' => null,
+        'signing_domain' => null,
+        'google_analytics_domains' => array('imbagamedeals.com'),
+        'google_analytics_campaign' => 'email_subscribed',
+        'metadata' => array('website' => 'imbagamedeals.com'),
+    );
+    $async = false;
+    $result = $mandrill->messages->send($message, $async);
+    print_r($result);
 }
 catch (Exception $e)
 {
