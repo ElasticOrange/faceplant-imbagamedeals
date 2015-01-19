@@ -1,5 +1,17 @@
 <?php
 
+/*
+CREATE TABLE `subscribers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `steam_id` varchar(100) NOT NULL,
+  `steam_data` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 
+*/
+
 require 'config.php';
 
 use Illuminate\Database\Capsule\Manager as Capsule;
